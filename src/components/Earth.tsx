@@ -1,38 +1,28 @@
-import { Sphere, useTexture } from "drei";
-import React, { useRef } from "react";
-import { useFrame } from "react-three-fiber";
-
+import React, { useState } from "react";
+import { SpaceThingo } from "./SpaceThingo";
 import earth from "../images/earth.png";
+import { useFrame } from "react-three-fiber";
 
 interface EarthProps {
   isStopped: boolean;
 }
 
 export const Earth: React.FC<EarthProps> = ({ isStopped }) => {
-  const earthTexture = useTexture(earth);
-
-  const ref = useRef(null);
-
-  let speed = 0.003;
+  const [y, setY] = useState(0);
+  const [speed, setSpeed] = useState(0.003);
 
   useFrame(() => {
     if (!isStopped) {
-      // @ts-ignore
-      ref.current.rotation.y += speed;
+      setY(y + speed);
     }
   });
 
-  function jolt() {
-    speed = 0.3;
+  const jolt = () => {
+    setSpeed(0.3);
     setTimeout(() => {
-      speed = 0.003;
+      setSpeed(0.003);
     }, 400);
-  }
+  };
 
-  return (
-    // @ts-ignore
-    <Sphere args={[2, 69, 69]} castShadow ref={ref} onClick={jolt}>
-      <meshStandardMaterial attach="material" metalness={0.1} map={earthTexture} />
-    </Sphere>
-  );
+  return <SpaceThingo textureUrl={earth} radius={2} yRotation={y} onClick={jolt} />;
 };

@@ -4,6 +4,7 @@ import { Canvas } from "react-three-fiber";
 import "./App.css";
 
 import { Earth } from "./components/Earth";
+import { Moon } from "./components/Moon";
 
 function App() {
   const [isStopped, setIsStopped] = useState(false);
@@ -18,6 +19,7 @@ function App() {
 
         <Suspense fallback={null}>
           <Earth isStopped={isStopped} />
+          <Moon isStopped={isStopped} />
         </Suspense>
 
         <OrbitControls />
@@ -25,6 +27,13 @@ function App() {
 
       <aside>
         <button onClick={() => setIsStopped(!isStopped)}>{isStopped ? "start" : "stop"}</button>
+        <a
+          href="https://github.com/kowasaur/kanye-western-hemisphere"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button>Github</button>
+        </a>
       </aside>
     </>
   );
