@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import { useFrame } from "react-three-fiber";
 
 import moon from "../images/moon.png";
+import { EarthProps } from "./Earth";
 import { SpaceThingo } from "./SpaceThingo";
 
-type xyz = [number, number, number];
+export type xyz = [number, number, number];
 
-interface MoonProps {
-  isStopped: boolean;
-}
-
-export const Moon: React.FC<MoonProps> = ({ isStopped }) => {
+export const Moon: React.FC<EarthProps> = ({ isStopped, meshIndex, shapeIndex }) => {
   const [position, setPosition] = useState<xyz>([3, 0, 3]);
   const [i, setI] = useState(3);
 
@@ -33,6 +30,14 @@ export const Moon: React.FC<MoonProps> = ({ isStopped }) => {
   };
 
   return (
-    <SpaceThingo textureUrl={moon} radius={0.5} position={position} yRotation={y} onClick={jolt} />
+    <SpaceThingo
+      textureUrl={moon}
+      radius={0.5}
+      position={position}
+      yRotation={y}
+      onClick={jolt}
+      meshIndex={meshIndex}
+      shapeIndex={shapeIndex}
+    />
   );
 };

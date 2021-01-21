@@ -6,8 +6,27 @@ import "./App.css";
 import { Earth } from "./components/Earth";
 import { Moon } from "./components/Moon";
 
+const meshes = ["normal", "wobble", "distort"];
+const shapes = [
+  "sphere",
+  "cone",
+  "cube",
+  "disk",
+  "torus",
+  "torus knot",
+  "tetrahedron",
+  "dodecahedron",
+];
+
 function App() {
   const [isStopped, setIsStopped] = useState(false);
+  const [meshIndex, setMeshIndex] = useState(0);
+  const [shapeIndex, setShapeIndex] = useState(0);
+
+  function newIndex(currentIndex: number, array: string[]) {
+    const lastIndex = array.length - 1;
+    return !(currentIndex - lastIndex) ? 0 : currentIndex + 1;
+  }
 
   return (
     <>
@@ -18,15 +37,21 @@ function App() {
         <Stars />
 
         <Suspense fallback={null}>
-          <Earth isStopped={isStopped} />
-          <Moon isStopped={isStopped} />
+          <Earth isStopped={isStopped} meshIndex={meshIndex} shapeIndex={shapeIndex} />
+          <Moon isStopped={isStopped} meshIndex={meshIndex} shapeIndex={shapeIndex} />
         </Suspense>
 
         <OrbitControls />
       </Canvas>
 
       <aside>
-        <button onClick={() => setIsStopped(!isStopped)}>{isStopped ? "start" : "stop"}</button>
+        <button onClick={() => setIsStopped(!isStopped)}>{isStopped ? "Start" : "Stop"}</button>
+        <button onClick={() => setMeshIndex(newIndex(meshIndex, meshes))}>
+          {meshes[newIndex(meshIndex, meshes)]}
+        </button>
+        <button onClick={() => setShapeIndex(newIndex(shapeIndex, shapes))}>
+          {shapes[newIndex(shapeIndex, shapes)]}
+        </button>
         <a
           href="https://github.com/kowasaur/kanye-western-hemisphere"
           target="_blank"

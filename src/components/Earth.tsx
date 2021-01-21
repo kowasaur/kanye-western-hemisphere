@@ -3,11 +3,13 @@ import { SpaceThingo } from "./SpaceThingo";
 import earth from "../images/earth.png";
 import { useFrame } from "react-three-fiber";
 
-interface EarthProps {
+export interface EarthProps {
   isStopped: boolean;
+  meshIndex: number;
+  shapeIndex: number;
 }
 
-export const Earth: React.FC<EarthProps> = ({ isStopped }) => {
+export const Earth: React.FC<EarthProps> = ({ isStopped, meshIndex, shapeIndex }) => {
   const [y, setY] = useState(0);
   const [speed, setSpeed] = useState(0.003);
 
@@ -24,5 +26,14 @@ export const Earth: React.FC<EarthProps> = ({ isStopped }) => {
     }, 400);
   };
 
-  return <SpaceThingo textureUrl={earth} radius={2} yRotation={y} onClick={jolt} />;
+  return (
+    <SpaceThingo
+      textureUrl={earth}
+      radius={2}
+      yRotation={y}
+      onClick={jolt}
+      meshIndex={meshIndex}
+      shapeIndex={shapeIndex}
+    />
+  );
 };
