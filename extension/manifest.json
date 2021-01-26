@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Kanye Western Hemisphere",
+  "version": "0.2.0",
+  "description": "Le epic funne",
+  "author": "Kowasaur",
+  "icons": { "128": "favicon.png" },
+  "browser_action": {
+    "default_icon": "favicon.png",
+    "default_popup": "index.html"
+  }
+}

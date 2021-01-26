@@ -22,7 +22,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "surge": "surge ./build/ kanyewesternhemisphere.surge.sh"
+    "surge": "surge ./build/ kanyewesternhemisphere.surge.sh",
+    "extension": "INLINE_RUNTIME_CHUNK=false react-scripts build && mv build extension-build && cp -v extension/* extension-build && echo '#root,body,html{width:600px!important;height:600px!important;}' >> extension-build/static/css/main.4622975a.chunk.css"
   },
   "eslintConfig": {
     "extends": [

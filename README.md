@@ -11,6 +11,12 @@ https://kanyewesternhemisphere.surge.sh/
 
 Also try clicking the globe.
 
+## Extension Installation
+
+I also made a browser extension that is exactly the same as the website
+
+### Chrome
+
 ## Changelog
 
 ### 0.2.0
