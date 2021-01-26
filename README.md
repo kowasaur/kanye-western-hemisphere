@@ -17,7 +17,7 @@ I also made a Chrome extension that is exactly the same as the website. This doe
 
 ## Installation
 
-1. Download [kanye-western-hemisphere-0.2.0.zip](https://github.com/kowasaur/drizzle-next-typescript/releases/download/v0.2.0/kanye-western-hemisphere-0.2.0.zip)
+1. Download [kanye-western-hemisphere-0.2.0.zip](https://github.com/kowasaur/kanye-western-hemisphere/releases/download/v0.2.0/kanye-western-hemisphere-0.2.0.zip)
 2. Extract it to wherever you want to store the extension
 3. Go to the extensions page in chrome (chrome://extensions)
 4. Enable developer mode (top right hand corner)
